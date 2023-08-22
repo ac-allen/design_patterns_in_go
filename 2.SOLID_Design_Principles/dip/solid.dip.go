@@ -60,6 +60,7 @@ type Research struct {
 
 
 func (r *Research) Investigate() {
+	// * HLM module working with dependency from LLM
 	//relations := r.relationships.relations
 	//for _, rel := range relations {
 	//	if rel.from.name == "John" &&
@@ -68,6 +69,7 @@ func (r *Research) Investigate() {
 	//	}
 	//}
 
+	// * HLM module using Abstraction
 	for _, p := range r.browser.FindAllChildrenOf("John") {
 		fmt.Println("John has a child called", p.name)
 	}
