@@ -1,4 +1,4 @@
-package ___SOLID_Design_Principles
+package main
 
 import (
 	"fmt"
@@ -6,6 +6,8 @@ import (
 	"net/url"
 	"strings"
 )
+
+// ? specific to our Journal
 
 var entryCount = 0
 
@@ -30,6 +32,7 @@ func (j *Journal) RemoveEntry(index int) {
 	// ...
 }
 
+// ? can be seperated for persistence as other structures might use the same for ex Books
 // breaks srp
 
 func (j *Journal) Save(filename string) {
