@@ -16,7 +16,7 @@ const (
 
 type Person struct {
 	name string
-	// other useful stuff here
+	// other useful stuff here like DOB, place
 }
 
 type Info struct {
