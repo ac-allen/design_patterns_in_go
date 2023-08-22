@@ -2,9 +2,9 @@ package main
 
 import "fmt"
 
-// Dependency Inversion Principle
-// HLM should not depend on LLM
-// Both should depend on abstractions
+// ? Dependency Inversion Principle
+// ? HLM should not depend on LLM
+// ? Both should depend on abstractions
 
 type Relationship int
 
