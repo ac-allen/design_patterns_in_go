@@ -116,7 +116,7 @@ func (f *BetterFilter) Filter(
 	return result
 }
 
-func main_() {
+func main_osp() {
 	apple := Product{"Apple", green, small}
 	tree := Product{"Tree", green, large}
 	house := Product{ "House", blue, large}

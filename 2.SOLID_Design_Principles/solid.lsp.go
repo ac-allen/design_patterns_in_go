@@ -75,7 +75,7 @@ func UseIt(sized Sized) {
 		", but got ", actualArea, "\n")
 }
 
-func main() {
+func main_lsp() {
 	rc := &Rectangle{2, 3}
 	UseIt(rc)
 
