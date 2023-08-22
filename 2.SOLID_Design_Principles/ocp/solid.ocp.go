@@ -4,7 +4,7 @@ import "fmt"
 
 // ? Open for extension, closed for modification
 // ? Enterprise pattern : Specification
-// combination of OCP and Repository demo
+// ? combination of OCP and Repository demo
 
 type Color int
 
