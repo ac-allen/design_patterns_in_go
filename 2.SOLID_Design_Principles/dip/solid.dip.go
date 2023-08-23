@@ -58,7 +58,6 @@ type Research struct {
 	browser RelationshipBrowser // low-level
 }
 
-
 func (r *Research) Investigate() {
 	// * HLM module working with dependency from LLM
 	//relations := r.relationships.relations

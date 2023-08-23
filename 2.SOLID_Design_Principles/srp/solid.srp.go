@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"strings"
 )
-
+// ? The Single-responsibility principle
 // ? specific to our Journal
 
 var entryCount = 0
