@@ -7,7 +7,7 @@ type Employee struct {
   AnnualIncome int
 }
 
-// what if we want factories for specific roles?
+// ? what if we want factories for specific roles?
 
 // functional approach
 func NewEmployeeFactory(position string,
