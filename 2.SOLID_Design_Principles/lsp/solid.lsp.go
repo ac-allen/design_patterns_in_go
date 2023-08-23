@@ -2,7 +2,8 @@ package main
 
 import "fmt"
 
-// ? Implementation of base class should also work for the derived class
+// ? Implementation of base class should also 
+// ? work for the derived class
 
 type Sized interface {
 	GetWidth() int

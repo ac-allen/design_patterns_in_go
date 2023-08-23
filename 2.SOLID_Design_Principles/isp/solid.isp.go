@@ -75,10 +75,10 @@ func (p Photocopier) Print(d Document) {
 	//
 }
 
-type MultiFunctionDevice interface {
-	Printer
-	Scanner
-}
+// type MultiFunctionDevice interface {
+// 	Printer
+// 	Scanner
+// }
 
 // interface combination + decorator
 type MultiFunctionMachine struct {
