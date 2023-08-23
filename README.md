@@ -1,6 +1,6 @@
 # Design Patterns
 
-This course covers all the GoF design patterns. In fact, here's the full list of what is covered:
+Here's the full list of what is covered:
 
 ### SOLID Design Principles: 
 Single Responsibility Principle, Open-Closed Principle, Liskov Substitution Principle, Interface Segregation Principle and Dependency Inversion Principle

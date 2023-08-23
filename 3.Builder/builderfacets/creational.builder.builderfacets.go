@@ -86,3 +86,6 @@ func main() {
   person := pb.Build()
   fmt.Println(*person)
 }
+
+// p = obj()
+// *p = &obj()
