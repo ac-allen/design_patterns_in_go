@@ -6,4 +6,6 @@ E.g., the construction call is expensive
 :thought_balloon: We only do it once  
 :thought_balloon: We give everyone the same instance  
 
-Want to prevent anyone creating additional copies
+Want to prevent anyone creating additional copies  
+
+Need to take care of lazy instantiation
