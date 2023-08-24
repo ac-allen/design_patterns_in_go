@@ -27,7 +27,6 @@ func readData(path string) (map[string]int, error) {
 		panic(err)
 	}
 	exPath := filepath.Dir(ex)
-
 	file, err := os.Open(exPath + path)
 	if err != nil {
 		return nil, err
@@ -54,12 +53,12 @@ var instance *singletonDatabase
 
 func GetSignletonDatabase() *singletonDatabase {
 	once.Do(func() {
-		caps, e := readData(".\\capitals.txt")
+		caps, e := readData("/capitals.txt")
 		db := singletonDatabase{}
-		if e != nil {
+		if e == nil {
 			db.capitals = caps
 		} else {
-			fmt.Printf("error")
+			fmt.Printf("error : %v", e)
 		}
 		instance = &db
 	})
