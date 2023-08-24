@@ -9,6 +9,10 @@ import (
 	"sync"
 )
 
+// ! Breaks dependency inversion principle
+// ! Unit test is going to integration test
+// ! as reading a live database
+
 type singletonDatabase struct {
 	capitals map[string]int
 }
@@ -65,8 +69,17 @@ func GetSingletonDatabase() *singletonDatabase {
 	return instance
 }
 
+func GetTotalPopulation(cities []string) int {
+	result := 0
+	for _, city := range cities {
+		result += GetSingletonDatabase().GetPopulation(city)
+	}
+	return result
+}
+
 func main() {
-	db := GetSingletonDatabase()
-	pop := db.GetPopulation("Seoul")
-	fmt.Println("Population of Seoul = ", pop)
+	cities := []string{"Seoul", "Mexico City"}
+	tp := GetTotalPopulation(cities)
+	ok := tp == (17500000 + 17400000)
+	fmt.Println(ok)
 }

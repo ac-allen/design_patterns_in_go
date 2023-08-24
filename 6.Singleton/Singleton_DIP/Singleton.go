@@ -9,6 +9,11 @@ import (
 	"sync"
 )
 
+// ? Substitute database with an abstract implementation
+type Database interface {
+	GetPopulation(name string) int
+}
+
 type singletonDatabase struct {
 	capitals map[string]int
 }
@@ -65,8 +70,39 @@ func GetSingletonDatabase() *singletonDatabase {
 	return instance
 }
 
+func GetTotalPopulation(cities []string) int {
+	result := 0
+	for _, city := range cities {
+		result += GetSingletonDatabase().GetPopulation(city)
+	} // DIP
+	return result
+}
+
+func GetTotalPopulationEx(db Database, cities []string) int {
+	result := 0
+	for _, city := range cities {
+		result += db.GetPopulation(city)
+	}
+	return result
+}
+
+type DummyDatabase struct {
+	dummyData map[string]int
+}
+
+func (d *DummyDatabase) GetPopulation(name string) int {
+	if len(d.dummyData) == 0 {
+		d.dummyData = map[string]int {
+			"alpha": 1,
+			"beta": 2,
+			"gamma": 3,
+		}
+	}
+	return d.dummyData[name]
+}
+
 func main() {
-	db := GetSingletonDatabase()
-	pop := db.GetPopulation("Seoul")
-	fmt.Println("Population of Seoul = ", pop)
+	names := []string{"alpha", "gamma"}
+	tp := GetTotalPopulationEx(&DummyDatabase{}, names)
+	fmt.Println(tp == 4)
 }
