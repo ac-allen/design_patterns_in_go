@@ -1,6 +1,6 @@
 # Factories design pattern
 
-### The factory pattern is a commonly used pattern in object oriented programming. In Go, there are many different ways in which you can use the factory pattern to make your code cleaner and more concise.
+The factory pattern is a commonly used pattern in object oriented programming. In Go, there are many different ways in which you can use the factory pattern to make your code cleaner and more concise.
 
 ### Simple factory
 The simplest, and most commonly used factory is a function that takes in some arguments, and returns an instance of Person. We can also return pointers to the Person instance instead.

@@ -9,7 +9,7 @@ type Person struct {
 }
 
 type PersonBuilder struct {
-  person *Person // needs to be inited
+  person *Person // needs to be iniated
 }
 
 func NewPersonBuilder() *PersonBuilder {
@@ -86,6 +86,3 @@ func main() {
   person := pb.Build()
   fmt.Println(*person)
 }
-
-// p = obj()
-// *p = &obj()
