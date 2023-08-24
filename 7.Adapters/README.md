@@ -1,5 +1,3 @@
-Implementing an Adapter is easy  
-
 Determine the API you have and the
 API you need  
 
