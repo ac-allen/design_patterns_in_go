@@ -6,7 +6,8 @@ import (
 	"fmt"
 	"strings"
 )
-func minmax (a, b int) (int, int) {
+
+func minmax(a, b int) (int, int) {
 	if a < b {
 		return a, b
 	} else {
@@ -22,14 +23,14 @@ type VectorImage struct {
 	Lines []Line
 }
 
-func NewRectangle(width, height int) *VectorImage{
+func NewRectangle(width, height int) *VectorImage {
 	width -= 1
 	height -= 1
-	return &VectorImage{[]Line {
-		Line{0, 0, width, 0},
-		Line{0, 0, 0, height},
-		Line{width, 0, width, height},
-		Line{0, height, width, height}}}
+	return &VectorImage{[]Line{
+		{0, 0, width, 0},
+		{0, 0, 0, height},
+		{width, 0, width, height},
+		{0, height, width, height}}}
 }
 
 // * the given interface (in form of lines)
@@ -48,8 +49,12 @@ func DrawPoints(owner RasterImage) string {
 	maxX, maxY := 0, 0
 	points := owner.GetPoints()
 	for _, pixel := range points {
-		if pixel.X > maxX { maxX = pixel.X }
-		if pixel.Y > maxY { maxY = pixel.Y }
+		if pixel.X > maxX {
+			maxX = pixel.X
+		}
+		if pixel.Y > maxY {
+			maxY = pixel.Y
+		}
 	}
 	maxX += 1
 	maxY += 1
@@ -59,7 +64,9 @@ func DrawPoints(owner RasterImage) string {
 	data := make([][]rune, maxY)
 	for i := 0; i < maxY; i++ {
 		data[i] = make([]rune, maxX)
-		for j := range data[i] { data[i][j] = ' ' }
+		for j := range data[i] {
+			data[i][j] = ' '
+		}
 	}
 
 	for _, point := range points {
@@ -105,18 +112,16 @@ func (a *vectorToRasterAdapter) addLine(line Line) {
 }
 */
 
-var pointCache = map[[16]byte] []Point{}
+var pointCache = map[[16]byte][]Point{}
 
 func (a *vectorToRasterAdapter) addLineCached(line Line) {
-	hash := func (obj interface{}) [16]byte {
+	hash := func(obj interface{}) [16]byte {
 		bytes, _ := json.Marshal(obj)
 		return md5.Sum(bytes)
 	}
 	h := hash(line)
 	if pts, ok := pointCache[h]; ok {
-		for _, pt := range pts {
-		a.points = append(a.points, pt)
-		}
+		a.points = append(a.points, pts...)
 		return
 	}
 
@@ -127,11 +132,11 @@ func (a *vectorToRasterAdapter) addLineCached(line Line) {
 
 	if dx == 0 {
 		for y := top; y <= bottom; y++ {
-		a.points = append(a.points, Point{left, y})
+			a.points = append(a.points, Point{left, y})
 		}
 	} else if dy == 0 {
 		for x := left; x <= right; x++ {
-		a.points = append(a.points, Point{x, top})
+			a.points = append(a.points, Point{x, top})
 		}
 	}
 
@@ -154,7 +159,7 @@ func VectorToRaster(vi *VectorImage) RasterImage {
 	return adapter // as RasterImage
 }
 
-func main(){
+func main() {
 	rc := NewRectangle(6, 4)
 	a := VectorToRaster(rc)
 	fmt.Print(DrawPoints(a))
