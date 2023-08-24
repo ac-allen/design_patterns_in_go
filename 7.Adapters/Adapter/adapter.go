@@ -127,4 +127,6 @@ func main() {
 	rc := NewRectangle(6, 4)
 	a := VectorToRaster(rc)
 	fmt.Print(DrawPoints(a))
+	a = VectorToRaster(rc)
+	fmt.Print(DrawPoints(a))
 }
