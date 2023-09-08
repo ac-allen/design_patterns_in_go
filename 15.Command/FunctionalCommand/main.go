@@ -1,4 +1,4 @@
-package command
+package main
 
 import "fmt"
 
@@ -31,4 +31,5 @@ func main() {
 	for _, cmd := range commands {
 		cmd()
 	}
+	fmt.Print(ba.Balance)
 }
