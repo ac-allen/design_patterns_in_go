@@ -1,53 +1,68 @@
-package facade
+package main
 
-import "fmt"
+import (
+    "fmt"
+)
 
-type Buffer struct {
-  width, height int
-  buffer []rune
+/*
+In the example below, we have a ComputerFacade that provides a simplified
+interface to a set of subsystems such as CPU, Memory, and HardDrive. 
+The Start method of the ComputerFacade performs a series of actions that 
+are required to start a computer. The end-user only needs to call the Start
+method to start the computer, and the ComputerFacade takes care of the 
+complexities of the subsystems.
+*/
+
+type CPU struct{}
+
+func (*CPU) Freeze() {
+    fmt.Println("CPU Freeze")
 }
 
-func NewBuffer(width, height int) *Buffer {
-  return &Buffer { width, height,
-    make([]rune, width*height)}
+func (*CPU) Jump(position int) {
+    fmt.Printf("CPU Jump to %d\n", position)
 }
 
-func (b *Buffer) At(index int) rune {
-  return b.buffer[index]
+func (*CPU) Execute() {
+    fmt.Println("CPU Execute")
 }
 
-type Viewport struct {
-  buffer *Buffer
-  offset int
+type Memory struct{}
+
+func (*Memory) Load(position int, data string) {
+    fmt.Printf("Memory Load data '%s' to position %d\n", data, position)
 }
 
-func NewViewport(buffer *Buffer) *Viewport {
-  return &Viewport{buffer: buffer}
+type HardDrive struct{}
+
+func (*HardDrive) Read(position int, size int) string {
+    data := fmt.Sprintf("HardDrive Read data from position %d with size %d", position, size)
+    fmt.Println(data)
+    return data
 }
 
-func (v *Viewport) GetCharacterAt(index int) rune {
-  return v.buffer.At(v.offset + index)
+type ComputerFacade struct {
+    cpu       *CPU
+    memory    *Memory
+    hardDrive *HardDrive
 }
 
-// a facade over buffers and viewports
-type Console struct {
-  buffers []*Buffer
-  viewports []*Viewport
-  offset int
+func NewComputerFacade() *ComputerFacade {
+    return &ComputerFacade{
+        cpu:       &CPU{},
+        memory:    &Memory{},
+        hardDrive: &HardDrive{},
+    }
 }
 
-func NewConsole() *Console {
-  b := NewBuffer(10, 10)
-  v := NewViewport(b)
-  return &Console{[]*Buffer{b}, []*Viewport{v}, 0}
-}
-
-func (c *Console) GetCharacterAt(index int) rune {
-  return c.viewports[0].GetCharacterAt(index)
+func (c *ComputerFacade) Start() {
+    c.cpu.Freeze()
+    c.memory.Load(0, "boot_loader")
+    c.cpu.Jump(0)
+    c.cpu.Execute()
 }
 
 func main() {
-  c := NewConsole()
-  u := c.GetCharacterAt(1)
-  fmt.Print(u)
+    computer := NewComputerFacade()
+    computer.Start()
 }
