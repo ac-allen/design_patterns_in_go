@@ -1,4 +1,4 @@
-#### FlyWeight: Avoid redundancy when storing data  
+#### FlyWeight: A space optimization technique that lets us use less memory by storing externally the data associated with similar objects.  
 
 E.g., Multiplayer RPG game
 - Plenty of users with identical first/last names
