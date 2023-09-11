@@ -31,7 +31,7 @@ func (d *Dragon) Age() int {
 	return d.Bird.Age
   }
   
-  func (d *Dragon) SetAge(age int) {
+func (d *Dragon) SetAge(age int) {
 	d.Bird.Age = age
 	d.Lizard.Age = age
   }

@@ -1,4 +1,4 @@
-package command
+package main
 
 import "fmt"
 
@@ -77,5 +77,7 @@ func main() {
 	cmd.Call()
 	cmd2 := NewBankAccountCommand(&ba, Withdraw, 50)
 	cmd2.Call()
+	cmd2.Undo()
+	cmd2.Undo()
 	fmt.Println(ba)
 }
