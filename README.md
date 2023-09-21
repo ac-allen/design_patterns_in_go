@@ -17,9 +17,7 @@ Chain of Responsibility, Command, Interpreter, Iterator, Mediator, Memento, Obse
 #### Builder
 - Separate component for when object construction gets too complicated
 - Can create mutually cooperating 
-
-##### sub-builders  
-- Often has a fluent interface
+- sub-builders: Often has a fluent interface
 
 #### Factories
 - Factory functions (constructors) are common
