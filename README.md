@@ -14,10 +14,10 @@ Adapter, Bridge, Composite, Decorator, Façade, Flyweight and Proxy
 ### Behavioral Design Patterns: 
 Chain of Responsibility, Command, Interpreter, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method and Visitor
 
-
 #### Builder
 - Separate component for when object construction gets too complicated
 - Can create mutually cooperating 
+
 ##### sub-builders  
 - Often has a fluent interface
 
